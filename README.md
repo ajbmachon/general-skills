@@ -26,10 +26,10 @@ A collection of generally useful Claude Code skills that work across all Anthrop
 claude
 
 # Add the marketplace
-/plugin marketplace add andremachon/claude-skills
+/plugin marketplace add ajbmachon/general-skills
 
 # Install the plugin
-/plugin install flowconai-skills@claude-skills
+/plugin install flowconai-skills@general-skills
 ```
 
 After installation, restart Claude Code to activate the skills.
@@ -38,16 +38,16 @@ After installation, restart Claude Code to activate the skills.
 
 ```bash
 # Clone the repository
-git clone https://github.com/andremachon/claude-skills.git
+git clone https://github.com/ajbmachon/general-skills.git
 
 # Start Claude Code
 claude
 
 # Add as local marketplace
-/plugin marketplace add ./claude-skills
+/plugin marketplace add ./general-skills
 
 # Install the plugin
-/plugin install flowconai-skills@claude-skills
+/plugin install flowconai-skills@general-skills
 ```
 
 ### Verify Installation
@@ -144,16 +144,16 @@ Twitter/X copywriting expertise:
 
 ```bash
 # Disable without uninstalling
-/plugin disable flowconai-skills@claude-skills
+/plugin disable flowconai-skills@general-skills
 
 # Re-enable
-/plugin enable flowconai-skills@claude-skills
+/plugin enable flowconai-skills@general-skills
 
 # Completely remove
-/plugin uninstall flowconai-skills@claude-skills
+/plugin uninstall flowconai-skills@general-skills
 
 # Update marketplace (fetch latest)
-/plugin marketplace update claude-skills
+/plugin marketplace update general-skills
 ```
 
 ## Contributing
@@ -171,4 +171,4 @@ MIT
 
 ## Author
 
-Andre Machon ([@andremachon](https://github.com/andremachon))
+Andre Machon ([@ajbmachon](https://github.com/ajbmachon))
