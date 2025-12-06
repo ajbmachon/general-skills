@@ -47,7 +47,7 @@ claude
 /plugin marketplace add ./general-skills
 
 # Install the plugin
-/plugin install flowconai-skills@general-skills
+/plugin install ajbmachon@general-skills
 ```
 
 ### Verify Installation
