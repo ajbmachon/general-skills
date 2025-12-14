@@ -29,7 +29,7 @@ claude
 /plugin marketplace add ajbmachon/general-skills
 
 # Install the plugin
-/plugin install flowconai-skills@general-skills
+/plugin install ajbmachon@general-skills
 ```
 
 After installation, restart Claude Code to activate the skills.
