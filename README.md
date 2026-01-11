@@ -1,4 +1,4 @@
-# FlowConAI Skills
+# General Skills for Claude Code
 
 A collection of generally useful Claude Code skills that work across all Anthropic surfaces. These skills are not workflow-specific—they're universal productivity boosters for anyone using Claude Code.
 
@@ -6,11 +6,13 @@ A collection of generally useful Claude Code skills that work across all Anthrop
 
 | Skill | Description |
 |-------|-------------|
-| **authoring-skills** | Best practices for writing SKILL.md files—covers conciseness, progressive disclosure, naming conventions, and the 500-line rule |
-| **hormozi-pitch** | Alex Hormozi's $100M Offers methodology for creating irresistible offers, pricing, guarantees, and value propositions |
+| **interview** | Transform rough ideas into implementation-ready specs through rigorous research and questioning. Evolves from Critical Challenger to Expert Partner. |
+| **authoring-skills** | Complete guide for writing skills—covers SKILL.md best practices, plugin development, triggers, hooks, and Anthropic guidelines |
 | **prompt-craft** | Research-backed prompt engineering with 10 core techniques. Modes: Analyze, Craft, Teach, Quick Fix |
-| **skill-developer** | Complete guide for creating Claude Code skills—triggers, hooks, enforcement levels, and Anthropic best practices |
+| **hormozi-pitch** | Alex Hormozi's $100M Offers methodology for creating irresistible offers, pricing, guarantees, and value propositions |
 | **x-post-writer** | Twitter/X copywriting system for high-engagement social media content with viral frameworks and examples |
+
+---
 
 ## Installation
 
@@ -55,60 +57,108 @@ claude
 After restarting Claude Code:
 
 ```bash
-# Check available commands
-/help
-
 # Ask Claude about available skills
 What skills are available?
 ```
 
-## Usage
+---
 
-Skills are **model-invoked**—Claude automatically uses them based on context. You don't need to explicitly call them.
+## Usage Guide
 
-### Examples
+Skills are **model-invoked**—Claude automatically uses them based on context. You can also invoke them explicitly using `/skill-name` or by asking Claude to use a specific skill.
 
-**Prompt engineering help:**
+### Interview Skill
+
+**Best for:** Planning features, writing specs, fleshing out ideas, requirements gathering
+
+```
+I want to build a caching layer for our API - can you help me spec this out?
+```
+
+Or invoke directly:
+```
+/interview
+```
+
+**What to expect:**
+1. **Research Phase** — Claude does BLOCKING research on your codebase and technologies before asking questions
+2. **Devil's Advocate Phase** — Claude challenges your idea: Does this need to exist? Is there a library? What could fail?
+3. **Deep Interview Phase** — Once the idea passes challenge, Claude becomes a collaborative partner, asking detailed questions while fact-checking in the background
+4. **Output** — A self-contained spec with Problem Statement, Objective, Success Criteria, Interview Record (Q&A), and any corrected assumptions
+
+**Key features:**
+- Always verifies technology assumptions against current docs (training data may be stale)
+- Surfaces contradictions between your claims and research findings
+- Captures Q&A in the spec so future Claude instances can implement without asking questions
+
+### Prompt Craft Skill
+
+**Best for:** Improving prompts, learning prompting techniques, writing prompts for LLMs
+
 ```
 Help me improve this prompt: "Write a blog post about AI"
 ```
-→ Claude uses `prompt-craft` to analyze and enhance your prompt
 
-**Creating offers:**
+Or ask for a specific mode:
 ```
-I need to create a compelling offer for my SaaS product
+Analyze this prompt and tell me what's weak about it
 ```
-→ Claude uses `hormozi-pitch` to guide you through the Value Equation
 
-**Writing tweets:**
-```
-Write a Twitter thread about automation workflows
-```
-→ Claude uses `x-post-writer` with viral copywriting frameworks
+### Authoring Skills Skill
 
-**Building skills:**
+**Best for:** Creating new Claude Code skills, understanding plugin architecture, configuring triggers and hooks
+
 ```
 I want to create a new Claude Code skill for database migrations
 ```
-→ Claude uses `skill-developer` for structure and best practices
+
+### Hormozi Pitch Skill
+
+**Best for:** Creating offers, pricing strategies, marketing copy, value propositions
+
+```
+I need to create a compelling offer for my SaaS product
+```
+
+### X Post Writer Skill
+
+**Best for:** Twitter/X content, social media copywriting, viral hooks
+
+```
+Write a Twitter thread about automation workflows
+```
+
+---
 
 ## Skill Details
 
+### interview
+
+A rigorous interview system that produces implementation-ready specs:
+
+**Two-Phase Identity:**
+- **Critical Challenger (Phases 1-2)** — Skeptical, probing. Challenges the idea's right to exist. Uses BLOCKING research.
+- **Expert Partner (Phase 3+)** — Collaborative, thorough. Helps refine implementation. Uses BACKGROUND research.
+
+**Research Protocol:**
+- Pre-challenge: BLOCKING research on codebase, technologies, existing solutions
+- During interview: BACKGROUND research to verify claims asynchronously
+- Pre-output: Verification research to ensure spec accuracy
+
+**Output includes:**
+- Problem Statement, Objective, Success Criteria
+- Interview Record (Q&A that led to decisions)
+- Assumption Corrections (what user/Claude got wrong)
+- Edge Cases, Tradeoffs, Open Questions (when relevant)
+
 ### authoring-skills
 
-Condensed best practices from Anthropic's official skill authoring guide:
-- Conciseness principles (context window is shared)
-- YAML frontmatter conventions
-- Progressive disclosure patterns
-- Quality checklist for skills
-
-### hormozi-pitch
-
-Alex Hormozi's $100M Offers methodology:
-- **Value Equation**: Dream Outcome × Perceived Likelihood / Time Delay × Effort
-- **MAGIC Naming**: Compelling product/service names
-- **Guarantee Types**: Unconditional, conditional, anti-guarantee, implied
-- **Value Stacking**: Justify any price point
+Complete guide for creating Claude Code skills and plugins:
+- SKILL.md best practices (conciseness, 500-line rule, progressive disclosure)
+- Plugin development (directory structure, manifests, distribution)
+- Trigger configuration (keywords, intent patterns, file paths)
+- Hook architecture (PreToolUse, PostToolUse, SessionStart)
+- Testing and troubleshooting workflows
 
 ### prompt-craft
 
@@ -124,13 +174,13 @@ Alex Hormozi's $100M Offers methodology:
 9. Verbalized Sampling (+1.6-2.1x diversity)
 10. Self-Reflection (+15-25% accuracy)
 
-### skill-developer
+### hormozi-pitch
 
-Complete skill development guide:
-- Two-hook architecture (UserPromptSubmit, PostToolUse)
-- Trigger types (keywords, intent patterns, file paths, content)
-- Enforcement levels (block, suggest, warn)
-- Testing and debugging workflows
+Alex Hormozi's $100M Offers methodology:
+- **Value Equation**: Dream Outcome × Perceived Likelihood / Time Delay × Effort
+- **MAGIC Naming**: Compelling product/service names
+- **Guarantee Types**: Unconditional, conditional, anti-guarantee, implied
+- **Value Stacking**: Justify any price point
 
 ### x-post-writer
 
@@ -140,21 +190,42 @@ Twitter/X copywriting expertise:
 - High-performing examples (100K+ views)
 - Before/after editing feedback
 
+---
+
 ## Managing the Plugin
 
 ```bash
 # Disable without uninstalling
-/plugin disable flowconai-skills@general-skills
+/plugin disable ajbmachon@general-skills
 
 # Re-enable
-/plugin enable flowconai-skills@general-skills
+/plugin enable ajbmachon@general-skills
 
 # Completely remove
-/plugin uninstall flowconai-skills@general-skills
+/plugin uninstall ajbmachon@general-skills
 
-# Update marketplace (fetch latest)
+# Update to latest version
 /plugin marketplace update general-skills
+/plugin uninstall ajbmachon@general-skills
+/plugin install ajbmachon@general-skills
 ```
+
+---
+
+## Tips for Best Results
+
+### Interview Skill
+- **Provide context upfront** — The more detail in your initial message, the smarter Claude's research and challenges will be
+- **Defend your ideas** — When Claude challenges, explain your reasoning. Ideas that survive become stronger specs
+- **Trust the research** — If Claude says "I found library X that does this," consider it seriously
+- **Review the spec** — The Interview Record should capture your key decisions. If something's missing, ask to add it
+
+### General
+- **Let skills activate naturally** — You don't need to explicitly invoke skills; Claude uses them based on context
+- **Combine skills** — You can use interview to spec a feature, then prompt-craft to write prompts for that feature
+- **Check for updates** — Skills improve over time. Run `/plugin marketplace update` periodically
+
+---
 
 ## Contributing
 
@@ -164,6 +235,9 @@ Contributions welcome! When adding or modifying skills:
 2. Use progressive disclosure (reference files for details)
 3. Write specific descriptions with trigger keywords
 4. Test with 3+ real scenarios before committing
+5. Use `<mandatory_read>` blocks for critical reference files
+
+---
 
 ## License
 
